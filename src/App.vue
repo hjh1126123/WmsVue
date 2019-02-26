@@ -1,6 +1,8 @@
 <template>
     <v-app class="mine-app">
-        <router-view class="blur"/>
+        <v-expand-transition>
+            <router-view class="blur"/>
+        </v-expand-transition>
     </v-app>
 </template>
 
@@ -38,10 +40,7 @@
         }
 
         .blur {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             width: 100%;
             height: 100%;
             text-align: center;

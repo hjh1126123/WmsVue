@@ -1,63 +1,63 @@
 <template>
-    <v-content dark>
-        <div class="wms">
-            <v-container fluid fill-height class="container elevation-10">
-                <v-navigation-drawer dark clipped class="transparent" v-model="drawer">
-                    <v-toolbar flat class="transparent">
-                        <v-list class="pa-0">
-                            <v-list-tile avatar>
-                                <v-list-tile-avatar>
-                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550754679159&di=d0720e1e7bbe6683833ca5858b4b2a58&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F04%2F20151104153720_KBrwV.jpeg">
-                                </v-list-tile-avatar>
-
-                                <v-list-tile-content>
-                                    <v-list-tile-title>网站管理系统</v-list-tile-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                        </v-list>
-                    </v-toolbar>
-                    <v-list dense>
-                        <template v-for="(item, i) in items">
-                            <v-layout
-                                    v-if="item.heading"
-                                    :key="i"
-                                    row
-                                    align-center>
-                                <v-flex xs6>
-                                    <v-subheader v-if="item.heading">
-                                        {{ item.heading }}
-                                    </v-subheader>
-                                </v-flex>
-                                <v-flex xs6 class="text-xs-right">
-                                    <v-btn small flat>edit</v-btn>
-                                </v-flex>
-                            </v-layout>
-                            <v-divider
-                                    v-else-if="item.divider"
-                                    :key="i"
-                                    dark
-                                    class="my-3"
-                            ></v-divider>
-                            <v-list-tile
-                                    v-else
-                                    :key="i"
-                                    @click=""
-                            >
-                                <v-list-tile-action>
-                                    <v-icon>{{ item.icon }}</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>
-                                        {{ item.text }}
-                                    </v-list-tile-title>
-                                </v-list-tile-content>
-                            </v-list-tile>
-                        </template>
+    <v-content dark class="wms">
+        <v-container fluid fill-height>
+            <v-navigation-drawer dark clipped class="transparent hidden-md-and-down" v-model="drawer" :mini-variant="mini">
+                <v-toolbar flat class="transparent">
+                    <v-list class="pa-0">
+                        <v-list-tile avatar>
+                            <v-list-tile-avatar>
+                                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg">
+                            </v-list-tile-avatar>
+                            <v-list-tile-content>
+                                <v-list-tile-title>个人信息</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
                     </v-list>
-                </v-navigation-drawer>
+                </v-toolbar>
+                <v-list dense>
+                    <template v-for="(item, i) in items">
+                        <v-layout
+                                v-if="item.heading"
+                                :key="i"
+                                row
+                                align-center>
+                            <v-flex xs6>
+                                <v-subheader v-if="item.heading">
+                                    {{ item.heading }}
+                                </v-subheader>
+                            </v-flex>
+                            <v-flex xs6 class="text-xs-right">
+                                <v-btn small flat>edit</v-btn>
+                            </v-flex>
+                        </v-layout>
+                        <v-divider
+                                v-else-if="item.divider"
+                                :key="i"
+                                dark
+                                class="my-3"
+                        ></v-divider>
+                        <v-list-tile
+                                v-else
+                                :key="i"
+                                @click=""
+                        >
+                            <v-list-tile-action>
+                                <v-icon>{{ item.icon }}</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title>
+                                    {{ item.text }}
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </template>
+                </v-list>
+            </v-navigation-drawer>
 
-            </v-container>
-        </div>
+            <v-layout justify-top align-left>
+                <router-view/>
+            </v-layout>
+        </v-container>
     </v-content>
 </template>
 
@@ -76,7 +76,8 @@
                     {icon: 'help', text: '帮助文档'},
                     {icon: 'settings', text: '后台配置'}
                 ],
-                drawer: null
+                drawer: null,
+                mini: false
             }
         },
         methods: {},
@@ -107,10 +108,6 @@
     .wms {
         width 100%;
         height 100%;
-
-        .container {
-            background-color rgba(0, 0, 0, 0.5);
-        }
     }
 
     @media only screen and (max-width: 480px) {
