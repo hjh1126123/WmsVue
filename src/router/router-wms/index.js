@@ -1,10 +1,10 @@
-import home from './modules/wms-home'
+import home from './wms-home'
 
 export default [
     {
         path: '/wms',
         redirect: '/wms/home',
-        component: () => import(/* webpackChunkName: "about" */ 'views/wms/index.vue'),
+        view: 'wms/index',
         children: [
             ...home
         ]

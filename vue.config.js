@@ -8,6 +8,7 @@ module.exports = {
     chainWebpack: config => {
         config.resolve.alias
             .set('views', resolve('src/views'))
+            .set('utils', resolve('src/utils'))
             .set('imgs', resolve('public/img'))
     }
 };

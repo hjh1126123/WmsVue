@@ -22,7 +22,6 @@ Vue.use(Vuetify, {
     //     warning: '#FFC107',
     // },
     customProperties: true,
-    iconfont: 'md',
     lang: {
         locales: {zhHans},
         current: 'zh-Hans'
