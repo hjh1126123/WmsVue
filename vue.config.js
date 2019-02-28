@@ -9,6 +9,7 @@ module.exports = {
         config.resolve.alias
             .set('views', resolve('src/views'))
             .set('utils', resolve('src/utils'))
+            .set('styles', resolve('src/styles'))
             .set('imgs', resolve('public/img'))
     }
 };

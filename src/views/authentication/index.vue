@@ -3,7 +3,7 @@
         <v-container fluid fill-height>
             <v-layout align-center justify-center>
                 <v-flex xs12 sm8 md4>
-                    <v-card dark class="elevation-12" color="transparent">
+                    <v-card class="elevation-6" color="transparent">
                         <v-toolbar color="transparent">
                             <v-toolbar-title>WMS登录界面</v-toolbar-title>
                             <v-spacer></v-spacer>
@@ -67,6 +67,4 @@
     }
 </script>
 
-<style lang="stylus" scoped>
-
-</style>
+<style lang="stylus"></style>

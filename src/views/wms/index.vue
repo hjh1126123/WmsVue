@@ -1,8 +1,8 @@
 <template>
     <div class="wms">
-        <core-drawer />
+        <core-drawer/>
 
-        <core-toolbar />
+        <core-toolbar/>
 
         <v-content>
             <v-container fluid fill-height>
@@ -18,9 +18,7 @@
     export default {
         name: "index",
         data() {
-            return {
-
-            }
+            return {}
         },
         methods: {},
         props: {},
@@ -46,10 +44,4 @@
     }
 </script>
 
-<style lang="stylus" scoped>
-    .wms {
-        width 100%;
-        height 100%;
-    }
-
-</style>
+<style lang="stylus"></style>

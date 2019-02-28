@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-import './components'
 import './plugins'
+import './components'
 
 import { sync } from 'vuex-router-sync'
 
@@ -11,7 +11,6 @@ import store from './store'
 
 import './registerServiceWorker'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 sync(store, router);
 

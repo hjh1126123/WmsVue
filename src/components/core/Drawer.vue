@@ -83,40 +83,33 @@
 
     export default {
         data: () => ({
-            logo: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+            logo: 'https://demos.creative-tim.com/vuetify-material-dashboard/img/vuetifylogo.png',
             links: [
                 {
-                    to: '/dashboard',
                     icon: 'mdi-view-dashboard',
                     text: 'Dashboard'
                 },
                 {
-                    to: '/user-profile',
                     icon: 'mdi-account',
                     text: 'User Profile'
                 },
                 {
-                    to: '/table-list',
                     icon: 'mdi-clipboard-outline',
                     text: 'Table List'
                 },
                 {
-                    to: '/typography',
                     icon: 'mdi-format-font',
                     text: 'Typography'
                 },
                 {
-                    to: '/icons',
                     icon: 'mdi-chart-bubble',
                     text: 'Icons'
                 },
                 {
-                    to: '/maps',
                     icon: 'mdi-map-marker',
                     text: 'Maps'
                 },
                 {
-                    to: '/notifications',
                     icon: 'mdi-bell',
                     text: 'Notifications'
                 }
