@@ -11,6 +11,9 @@
         name: 'App',
         data() {
             return {}
+        },
+        mounted() {
+            
         }
     }
 </script>

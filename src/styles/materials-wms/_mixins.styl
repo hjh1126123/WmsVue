@@ -52,7 +52,7 @@ inputs-color(color, color-name) {
 drawer-active-colors(color-name, color) {
   .v-navigation-drawer .v-list .v-list-item .v-list__tile.v-list__tile--active.{color-name} {
     background-color: color !important;
-    @include shadow-big-color(color);
+    shadow-big-color(color);
   }
 
 }
@@ -60,7 +60,7 @@ drawer-active-colors(color-name, color) {
 toolbar-colors(color-name, color) {
   &.{color-name} {
     background-color: color !important;
-    @include shadow-big-color(color);
+    shadow-big-color(color);
   }
 
 }
@@ -83,14 +83,14 @@ notifications-color(color-name, color) {
 card-header-color(color, shadow-color, color-400, color-600) {
   .v-card.{color} {
     background: linear-gradient(60deg, color-400, color-600) !important;
-    @include shadow-big-color(shadow-color);
+    shadow-big-color(shadow-color);
   }
 
 }
 
 alert-shadow(color-name, shadow-color) {
   &{color-name} {
-    @include shadow-big-color(shadow-color);
+    shadow-big-color(shadow-color);
   }
 
 }
@@ -101,18 +101,18 @@ transition-except-props(property...) {
 
 dropdown-menu-color(color) {
   background-color: color !important;
-  @include button-shadow-color(color);
+  button-shadow-color(color);
 }
 
 button-color(color) {
   background-color: color !important;
-  @include shadow-2dp-color(color);
+  shadow-2dp-color(color);
 
   &:focus,
   &:active,
   &:hover {
     // remove this line if you want black shadows
-    @include button-shadow-color(color);
+    button-shadow-color(color);
     background-color: darken(color, 3%) !important;
   }
 
@@ -139,11 +139,11 @@ button-color(color) {
 
 social-buttons-color(color) {
   background-color: color !important;
-  color: white @include shadow-2dp-color(color);
+  color: white shadow-2dp-color(color);
   &:hover, &:focus, &:active, &.active, &:active:focus, &:active:hover, &.active:focus, &.active:hover {
     background-color: color !important;
     color: white;
-    @include button-shadow-color(color);
+    button-shadow-color(color);
   }
 
   &.v-btn--simple {
