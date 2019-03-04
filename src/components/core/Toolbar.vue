@@ -1,7 +1,6 @@
 <template>
     <v-toolbar
             id="core-toolbar"
-
             flat
             prominent
             style="background: #eee;"
@@ -17,13 +16,13 @@
                         icon
                         @click.stop="onClickBtn"
                 >
-                    <v-icon>mdi-view-list</v-icon>
+                    <v-icon>menu</v-icon>
                 </v-btn>
-                {{ title }}
+                {{ name }}
             </v-toolbar-title>
         </div>
 
-        <v-spacer />
+        <v-spacer/>
         <v-toolbar-items>
             <v-flex
                     align-center
@@ -33,7 +32,7 @@
                 <v-text-field
                         v-if="responsiveInput"
                         class="mr-4 mt-2 purple-input"
-                        label="Search..."
+                        label="搜索功能"
                         hide-details
                         color="purple"
                 />
@@ -42,7 +41,7 @@
                         class="toolbar-items"
                         to="/"
                 >
-                    <v-icon color="tertiary">mdi-view-dashboard</v-icon>
+                    <v-icon color="tertiary">search</v-icon>
                 </router-link>
                 <v-menu
                         bottom
@@ -50,12 +49,9 @@
                         content-class="dropdown-menu"
                         offset-y
                         transition="slide-y-transition">
-                    <router-link
-                            v-ripple
-                            slot="activator"
-                            class="toolbar-items"
-                            to="/notifications"
-                    >
+                    <a v-ripple
+                       slot="activator"
+                       class="toolbar-items">
                         <v-badge
                                 color="error"
                                 overlap
@@ -63,9 +59,9 @@
                             <template slot="badge">
                                 {{ notifications.length }}
                             </template>
-                            <v-icon color="tertiary">mdi-bell</v-icon>
+                            <v-icon color="tertiary">notifications</v-icon>
                         </v-badge>
-                    </router-link>
+                    </a>
                     <v-card>
                         <v-list dense>
                             <v-list-tile
@@ -85,7 +81,7 @@
                         class="toolbar-items"
                         to="/user-profile"
                 >
-                    <v-icon color="tertiary">mdi-account</v-icon>
+                    <v-icon color="tertiary">person</v-icon>
                 </router-link>
             </v-flex>
         </v-toolbar-items>
@@ -94,7 +90,8 @@
 
 <script>
     import {
-        mapMutations
+        mapMutations,
+        mapState
     } from 'vuex'
 
     export default {
@@ -106,39 +103,33 @@
                 'Another Notification',
                 'Another One'
             ],
-            title: null,
             responsive: false,
             responsiveInput: false
         }),
-
-        watch: {
-            '$route' (val) {
-                this.title = val.name
-            }
+        computed: {
+            ...mapState('route', ['name']),
         },
-
-        mounted () {
-            this.onResponsiveInverted()
+        mounted() {
+            this.onResponsiveInverted();
             window.addEventListener('resize', this.onResponsiveInverted)
         },
-        beforeDestroy () {
+        beforeDestroy() {
             window.removeEventListener('resize', this.onResponsiveInverted)
         },
-
         methods: {
             ...mapMutations('app', ['setDrawer', 'toggleDrawer']),
-            onClickBtn () {
+            onClickBtn() {
                 this.setDrawer(!this.$store.state.app.drawer)
             },
-            onClick () {
+            onClick() {
                 //
             },
-            onResponsiveInverted () {
+            onResponsiveInverted() {
                 if (window.innerWidth < 991) {
-                    this.responsive = true
+                    this.responsive = true;
                     this.responsiveInput = false
                 } else {
-                    this.responsive = false
+                    this.responsive = false;
                     this.responsiveInput = true
                 }
             }

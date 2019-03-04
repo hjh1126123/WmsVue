@@ -6,8 +6,8 @@ import './components'
 import { sync } from 'vuex-router-sync'
 
 import App from './App'
-import router from './router'
 import store from './store'
+import router from './router'
 
 import './registerServiceWorker'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'

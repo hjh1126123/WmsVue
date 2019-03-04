@@ -4,7 +4,8 @@ import Vuetify, {
     VNavigationDrawer,
     VToolbar,
     VFadeTransition,
-    VList
+    VList,
+    VTooltip
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 import 'vuetify/src/stylus/app.styl'
@@ -29,7 +30,8 @@ Vue.use(Vuetify, {
         VNavigationDrawer,
         VList,
         VToolbar,
-        VFadeTransition
+        VFadeTransition,
+        VTooltip
     },
     directives: {
         Ripple

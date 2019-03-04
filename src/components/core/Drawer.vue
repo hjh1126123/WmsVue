@@ -42,34 +42,78 @@
                             color="purple"
                     />
                 </v-list-tile>
-                <v-list-tile
-                        v-for="(link, i) in links"
-                        :key="i"
-                        :to="link.to"
-                        :active-class="color"
-                        avatar
-                        class="v-list-item"
-                >
+                <v-list-tile>
                     <v-list-tile-action>
-                        <v-icon>{{ link.icon }}</v-icon>
+                        <v-icon>home</v-icon>
                     </v-list-tile-action>
-                    <v-list-tile-title
-                            v-text="link.text"
-                    />
+                    <v-list-tile-title>Home</v-list-tile-title>
                 </v-list-tile>
-                <v-list-tile
-                        disabled
-                        active-class="primary"
-                        class="v-list-item v-list__tile--buy"
-                        to="/upgrade"
+                <v-list-group
+                        prepend-icon="account_circle"
+                        value="true"
                 >
-                    <v-list-tile-action>
-                        <v-icon>mdi-package-up</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-title class="font-weight-light">
-                        Upgrade To PRO
-                    </v-list-tile-title>
-                </v-list-tile>
+                    <template v-slot:activator>
+                        <v-list-tile>
+                            <v-list-tile-title>Users</v-list-tile-title>
+                        </v-list-tile>
+                    </template>
+                    <v-list-group
+                            no-action
+                            sub-group
+                            value="true"
+                    >
+                        <template v-slot:activator>
+                            <v-list-tile>
+                                <v-list-tile-title>Admin</v-list-tile-title>
+                            </v-list-tile>
+                        </template>
+
+                        <v-list-tile
+                                v-for="(admin, i) in admins"
+                                :key="i"
+                                @click="">
+                            <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
+                            <v-list-tile-action>
+                                <v-icon v-text="admin[1]"></v-icon>
+                            </v-list-tile-action>
+                        </v-list-tile>
+                    </v-list-group>
+                    <v-list-group
+                            sub-group
+                            no-action
+                    >
+                        <template v-slot:activator>
+                            <v-list-tile>
+                                <v-list-tile-title>Actions</v-list-tile-title>
+                            </v-list-tile>
+                        </template>
+                        <v-list-tile
+                                v-for="(crud, i) in cruds"
+                                :key="i"
+                                @click=""
+                        >
+                            <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
+                            <v-list-tile-action>
+                                <v-icon v-text="crud[1]"></v-icon>
+                            </v-list-tile-action>
+                        </v-list-tile>
+                    </v-list-group>
+                </v-list-group>
+                <!--<v-list-tile-->
+                <!--v-for="(link, i) in links"-->
+                <!--:key="i"-->
+                <!--:to="link.to"-->
+                <!--:active-class="color"-->
+                <!--avatar-->
+                <!--class="v-list-item"-->
+                <!--&gt;-->
+                <!--<v-list-tile-action>-->
+                <!--<v-icon>{{ link.icon }}</v-icon>-->
+                <!--</v-list-tile-action>-->
+                <!--<v-list-tile-title-->
+                <!--v-text="link.text"-->
+                <!--/>-->
+                <!--</v-list-tile>-->
             </v-layout>
         </v-img>
     </v-navigation-drawer>
@@ -86,33 +130,19 @@
             logo: 'https://demos.creative-tim.com/vuetify-material-dashboard/img/vuetifylogo.png',
             links: [
                 {
-                    icon: 'mdi-view-dashboard',
-                    text: 'Dashboard'
-                },
-                {
-                    icon: 'mdi-account',
-                    text: 'User Profile'
-                },
-                {
-                    icon: 'mdi-clipboard-outline',
-                    text: 'Table List'
-                },
-                {
-                    icon: 'mdi-format-font',
-                    text: 'Typography'
-                },
-                {
-                    icon: 'mdi-chart-bubble',
-                    text: 'Icons'
-                },
-                {
-                    icon: 'mdi-map-marker',
-                    text: 'Maps'
-                },
-                {
-                    icon: 'mdi-bell',
-                    text: 'Notifications'
+                    icon: 'home',
+                    text: '主页'
                 }
+            ],
+            admins: [
+                ['Management', 'people_outline'],
+                ['Settings', 'settings']
+            ],
+            cruds: [
+                ['Create', 'add'],
+                ['Read', 'insert_drive_file'],
+                ['Update', 'update'],
+                ['Delete', 'delete']
             ],
             responsive: false
         }),
@@ -131,6 +161,8 @@
             }
         },
         mounted() {
+            console.log(this.$router);
+
             this.onResponsiveInverted();
             window.addEventListener('resize', this.onResponsiveInverted)
         },

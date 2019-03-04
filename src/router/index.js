@@ -15,38 +15,37 @@ const routes = [
     ...wms
 ];
 
-function ConnectRoute (path, view, name, children) {
+function ConnectRoute(path, view, name, redirect, children) {
     let tmp = {
         name: name || view,
         path,
         component: () => import(`views/${view}.vue`)
     };
-    if(children){
-        children.map(path => ConnectRoute(path.path, path.view, path.name, path.children));
+    if (redirect) {
+        tmp.redirect = redirect;
+    }
+    if (children) {
+        tmp.children = children.map(path => ConnectRoute(path.path, path.view, path.name, path.redirect, path.children));
     }
     return tmp;
 }
 
-// create router
 const router = new Router({
     mode: 'history',
-    routes: routes.map(path => ConnectRoute(path.path, path.view, path.name, path.children)).concat([
-        { path: '*', redirect: '/authentication' }
+    routes: routes.map(path => ConnectRoute(path.path, path.view, path.name, path.redirect, path.children)).concat([
+        {path: '*', redirect: '/authentication'}
     ]),
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition
         }
         if (to.hash) {
-            return { selector: to.hash }
+            return {selector: to.hash}
         }
-        return { x: 0, y: 0 }
+        return {x: 0, y: 0}
     }
 });
 
-// Bootstrap Analytics
-// Set in .env
-// https://github.com/MatteoGabriele/vue-analytics
 if (process.env.GOOGLE_ANALYTICS) {
     Vue.use(VueAnalytics, {
         id: process.env.GOOGLE_ANALYTICS,

@@ -1,16 +1,11 @@
 <template>
     <div class="wms">
-        <core-drawer/>
-
         <core-toolbar/>
 
-        <v-content>
-            <v-container fluid fill-height>
-                <v-layout justify-top align-left>
-                    <router-view/>
-                </v-layout>
-            </v-container>
-        </v-content>
+        <core-drawer/>
+
+        <core-view/>
+
     </div>
 </template>
 
